@@ -1,0 +1,22 @@
+#include<stdio.h>
+int main(){
+    int i,k,j,temp,array[]={5,4,3,2,1};
+    for(i=0;i<=4;i++){
+        for(j=0;j<=(4-i);j++){
+            if (array[j]>array[j+1]){
+                temp=array[j];
+                array[j]=array[j+1];
+                array[j+1]=temp;
+                
+            }
+            
+        }
+    }
+    for(k=0;k<=4;k++){
+        printf("%d\n",array[k]);
+    }
+    
+    
+    
+    return 0;
+}
