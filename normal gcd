@@ -1,0 +1,28 @@
+#include<stdio.h>
+int main(){
+    
+    int h,l,temp;
+    scanf("%d %d",&h,&l);
+    if (h%l==0){
+        printf("%d",l);
+        
+    }
+    else{
+        while (1){
+            temp=h;
+            h=l;
+            l=temp%l;
+            if (h%l==0){
+                printf("%d",l);
+                break;
+            }
+            
+            
+        }
+
+    }
+    
+    
+    
+    return 0;
+}
