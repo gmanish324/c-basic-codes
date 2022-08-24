@@ -1,0 +1,20 @@
+#include<stdio.h>
+int main(){
+    int array[10]={9,3,4,68,23,56,1,2,3,78};
+    int i,j,temp=0,minpos;
+    for(i=0;i<=8;i++){
+        minpos=i;
+        for(j=i+1;j<=9;j++){
+            if( array[minpos]>array[j]){
+                temp=array[minpos];
+                array[minpos]=array[j];
+                array[j]=temp;
+            }
+        }
+    }
+    
+    for(i=0;i<=9;i++){
+        printf("%d\n",array[i]);
+    }
+    return 0;
+}
