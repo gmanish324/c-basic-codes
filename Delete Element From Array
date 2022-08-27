@@ -1,0 +1,20 @@
+#include<stdio.h>
+int main(){
+    int i, a[10]={1,23,45,687,234,654,7645,34,657,345};
+    //234 ko delete marna hai 
+    for (i=0;i<=9;i++){
+        if(a[i]==234){
+            break;
+        }
+    }
+    while(i<=8){ // while loop use kiya and no for 
+        a[i]=a[i+1];
+        i++;
+    }
+    for(i=0;i<=8;i++){
+        printf("%d\n",a[i]);
+    }
+    
+    
+    return 0;
+}
