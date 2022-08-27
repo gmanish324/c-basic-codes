@@ -1,0 +1,25 @@
+#include<stdio.h>
+int main(){
+   char a[]="madam";
+   //scanf("%s",a);
+   int i,size=sizeof(a)/sizeof(a[0]),count=0;
+   
+    
+   printf("%d\n",size);
+   for(i=0;i<=(size/2)-1;i++){
+       if (a[i]==a[size-1-i]){
+           count++;
+       }
+    
+   }
+   if( count==(size/2)){
+        printf("palindrome");
+    }
+    else{
+        printf("not");
+    }
+   
+   
+    return 0;
+}
+//a ko inpu manish do and see manish prin hojayega 
