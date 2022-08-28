@@ -1,0 +1,33 @@
+// Online C compiler to run C program online
+#include <stdio.h>
+
+int main() {
+        char sr1[10]={};
+    char sr2[10]={};
+
+    char conc[30]={};
+    scanf("%s %s",sr1,sr2);
+    
+    char temp;
+    int k, i=0,j=0;
+    while(sr1[i]!='\0'){
+        i++;
+    }
+    
+     while(sr2[j]!='\0'){
+        j++;
+    }
+    int *p1=sr1,*p2=sr2;// imp shuru hua
+    for(k=0;k<=(i-1);k++){
+         *(conc+k)=*(sr1+k);
+    }
+    int z=0;
+    for(k=i;k<=(i+j-1);k++){
+         *(conc+k)=*(sr2+z);
+         z++;
+    }// imp ends
+    printf("%s",conc);
+
+
+    return 0;
+}
