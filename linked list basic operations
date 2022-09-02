@@ -1,0 +1,143 @@
+#include<stdlib.h>
+#include <stdio.h>
+
+struct student{
+    int roll;
+    struct student *next;
+}; 
+struct student * deletefirst(struct student *pointer){
+    struct student *ptr;
+    ptr=(struct student *)(malloc(sizeof(struct student)));
+    ptr=pointer;//jab ye karte ho toh ptr me pointer ka current address store kar dete ho
+    pointer=pointer->next;// but ye likhne se tum pointer ko aage
+   // badha dete ho,
+  //  imp->pointer aage badha ,ptr nahi kyuki usme pointer ka //intial 
+   // address hi bas stored tha
+    ptr->next=NULL;
+    return pointer;}
+struct student * deletebet(struct student *pointer,int delnode){
+    struct student *ptr;
+    ptr=(struct student *)(malloc(sizeof(struct student)));
+    
+    int i=0;
+    while(i<delnode-2){
+        pointer=pointer->next;
+        i++;
+    }
+    ptr=pointer;
+    ptr->next=(ptr->next)->next;
+    (ptr->next)->next=NULL;
+    /*NOW YOU ARE GOING TO SEE A VERY BIG SILLY MISTAKE:
+    pointer->next=((pointer->next)->next);
+    ((pointer->next)->next)=NULL;
+    
+    pointer next value has changed        */                                                                                                                                                                                                                                                                                                                        
+    // very very very important silly //mistake
+    
+    return pointer;
+    
+}
+
+    
+                                                                   
+
+struct student*afternode(struct student*node,int data){
+    struct student *newnode;
+    newnode=(struct student *)(malloc(sizeof(struct student)));
+    newnode->next=node->next;
+    node->next=newnode;
+    newnode->roll=data;
+    return node;
+    
+}
+struct student insertatlast(struct student *pointer,struct student*newnode,int element ){
+     
+     int i=0;
+     while(pointer!=NULL){
+         pointer=pointer->next;
+         if (pointer->next==NULL){
+             break;
+         }
+     }
+     newnode->next=NULL;
+     pointer->next=newnode;
+     newnode->roll=element;
+      
+}
+
+
+struct student* insertatfirst(struct student *pointer,int element){
+ struct student *newnode,*ptr;
+    newnode=(struct student *)(malloc(sizeof(struct student)));
+    ptr=(struct student *)(malloc(sizeof(struct student)));
+    ptr=pointer;
+    newnode->roll=element;
+    newnode->next=pointer;
+    while(ptr->next!=pointer){
+        ptr=ptr->next;
+    }
+    ptr->next=newnode;
+    return newnode;
+}
+
+void insert(struct student *pointer,int element,int index){
+    struct student *newnode;
+    newnode=(struct student *)(malloc(sizeof(struct student)));
+    //important
+    int i=0;
+    
+    // for loop isilye use nhi karna chahiye kyuki i ka
+    // value ek increase hoke milega
+    while(i<index-1){
+        pointer=pointer->next;
+        
+        i++;
+    } 
+    newnode->next=pointer->next;
+    pointer->next=newnode;
+    newnode->roll=element;
+}
+void transversal(struct student *pointer){
+    struct student *ptr=pointer;
+    while(ptr->next!=pointer){// ye click nhi kiya
+        printf("%d\n",ptr->roll);
+        ptr=ptr->next;
+    }
+    printf("%d",ptr->roll);
+}
+int main() {
+ struct student *head,*first,*second,*third,*fourth;
+ head=(struct student *)(malloc(sizeof(struct student)));
+ first=(struct student *)(malloc(sizeof(struct student)));
+ second=(struct student *)(malloc(sizeof(struct student)));
+ third=(struct student *)(malloc(sizeof(struct student)));
+ fourth=(struct student *)(malloc(sizeof(struct student)));
+ 
+ //allocating memories
+ head->roll=1;
+ head->next=first;
+ 
+ first->roll=2;
+ first->next=second;
+
+ second->roll=3;
+ second->next=third;
+ 
+ third->roll=4;
+ third->next=fourth;
+ 
+ fourth->roll=5;
+ fourth->next=head;
+
+
+//transversal(head);
+head=insertatfirst(head,19);
+//insert(head,20,3);
+
+//insertatlast(head,newnode,19);
+//first=afternode(first,19);
+//head=deletefirst(head);
+//first=deletebet(head,3);
+transversal(head);
+   return 0;
+}
