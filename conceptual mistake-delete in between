@@ -1,0 +1,47 @@
+struct student * deletebet(struct student *pointer,int delnode){
+    struct student *ptr;
+    ptr=(struct student *)(malloc(sizeof(struct student)));
+    
+    int i=0;
+    ptr=pointer;
+
+    while(i<delnode-1){
+        ptr=ptr->next;
+        i++;
+    }
+    ptr->next=(ptr->next)->next;
+    (pointer->next)->next=ptr->next;
+   // free(pointer->next->next);
+   
+    return pointer;
+    /*NOW YOU ARE GOING TO SEE A VERY BIG SILLY MISTAKE:
+    pointer->next=((pointer->next)->next);
+    ((pointer->next)->next)=NULL;
+    
+    
+    //wrong code for dele be down--->>>
+    struct student * deletebet(struct student *pointer,int delnode){
+    struct student *ptr;
+    ptr=(struct student *)(malloc(sizeof(struct student)));
+    
+    int i=0;
+    while(i<delnode-2){
+        pointer=pointer->next;
+        i++;
+    }
+    ptr=pointer;
+    
+    ptr->next=(ptr->next)->next;
+    (ptr->next)->next=NULL;
+    /*NOW YOU ARE GOING TO SEE A VERY BIG SILLY MISTAKE:
+    pointer->next=((pointer->next)->next);
+    ((pointer->next)->next)=NULL;
+    
+    pointer next value has changed        */                                                                                                                                                                                                                                                                                                                        
+    // very very very important silly //mistake
+    
+    return pointer;
+    
+}
+
+    
