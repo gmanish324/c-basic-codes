@@ -11,7 +11,10 @@ struct student * deletebet(struct student *pointer,int delnode){
     }
     ptr->next=(ptr->next)->next;
     (pointer->next)->next=ptr->next;
-   // free(pointer->next->next);
+    free(pointer->next->next);
+    return pointer;
+   }
+   
    
     return pointer;
     /*NOW YOU ARE GOING TO SEE A VERY BIG SILLY MISTAKE:
