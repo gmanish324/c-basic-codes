@@ -1,0 +1,78 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node{
+    char data;
+    struct Node * next;
+};
+
+int parenthesis(char array[],int size){
+    struct  Node *top=NULL;
+    for(int i=0;i<size;i++){
+        if(array[i]=='{'){
+            push(&top,array[i]);
+        }
+        else if(array[i]=='}'){
+            if(isEmpty(top)){
+                return 0;
+            }
+            else{
+                pop(&top);
+            }
+        }
+    }
+    if(isEmpty(top)){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+    
+    
+}
+void traversal(struct Node * ptr ){
+    while(ptr!=NULL){
+        printf("%c",ptr->data);
+        ptr=ptr->next;
+    }
+}
+
+int isEmpty(struct Node * ptr){
+    if(ptr==NULL){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+void push(struct Node **ptr, char data){
+    struct Node *newnode=(struct Node *)(malloc(sizeof(struct Node)));
+    newnode->data=data;
+    newnode->next=(*ptr);
+    (*ptr)=newnode;
+}
+
+void pop(struct Node **ptr){
+    if(isEmpty(*ptr)){
+        printf("stack underflow error");
+}
+else{
+     struct Node *pointer=*ptr;
+    (*ptr)=(*ptr)->next;
+    free(pointer);
+}
+   
+    
+}
+int main(){
+    
+    char array[10]={};
+   
+    for(int i=0;i<10;i++){
+        scanf("%c",&(array[i]));
+    }
+    printf("%d",parenthesis(array,10));
+   
+    
+}
