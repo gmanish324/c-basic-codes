@@ -1,0 +1,106 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node{
+    char data;
+    struct Node * next;
+};
+
+int precedence(char data){
+    if (data=='+' || data=='-'){
+        return 1;
+    }
+    else{
+        return 2;
+        
+    }
+} 
+
+
+
+void push(struct Node** ptr,char data){
+    struct Node * newnode=(struct Node*)(malloc(sizeof(struct Node)));
+    newnode->data=data;
+    newnode->next=*ptr;
+    *ptr=newnode;
+}
+
+char pop(struct Node ** ptr){
+    struct Node *pointer=*ptr;
+    *ptr=(*ptr)->next;
+    //free(pointer); // maha silly
+    //return (*ptr)->data; // maha silly
+    return (pointer->data);
+    
+}
+
+
+
+int isEmpty(struct Node * ptr){
+    if(ptr==NULL){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+    
+void append(char array[],char data){
+    int i=0;
+    while(array[i]!='\0'){
+        
+        i++;
+        
+    }
+    array[i]=data;
+}
+
+    
+
+int main(){
+    
+    struct Node *top=NULL;
+    
+    char infix[8]={};
+    printf("enter 7 character  infix expression");
+    scanf("%s",infix);
+    
+    
+    char postfix[8]={};
+    for(int i=0;i<7;i++){
+       
+        
+        if(isEmpty(top) && ( infix[i]=='+'|| infix[i]=='-'|| infix[i]=='/'|| infix[i]=='*')){
+            push(&top,infix[i]); 
+             
+        }
+        else if(( infix[i]=='+'|| infix[i]=='-'|| infix[i]=='/'|| infix[i]=='*') && (isEmpty(top)==0)){
+            if (precedence(infix[i])>precedence(top->data)){
+                push(&top,infix[i]);
+            }
+            else{
+                while((isEmpty(top)==0) && (precedence(infix[i])<=precedence(top->data))){
+                    
+                    append(postfix,pop(&top));
+                    
+                }
+                push(&top,infix[i]);}}
+          
+        else{
+            append(postfix,infix[i]);}
+    }
+            
+    while(isEmpty(top)==0){
+        append(postfix,pop(&top));
+    }
+    
+    printf("%s",postfix);
+  
+    return 0;
+   
+  
+    
+    
+    
+}
