@@ -1,0 +1,36 @@
+// INORDER===>
+
+    if(root==NULL){
+        return ;}
+    
+    
+    preOrder(root->left);
+    printf("%d ", root->data);
+    preOrder(root->right);
+    return ;
+    
+    }
+// POSTORDER
+
+  if(root==NULL){
+        return ;}
+    
+    
+    preOrder(root->left);
+    
+    preOrder(root->right);
+    printf("%d ", root->data);
+    return ;
+    
+// PREORDER
+
+  if(root==NULL){
+        return ;}
+    
+    printf("%d ", root->data);
+    preOrder(root->left);
+    
+    preOrder(root->right);
+    
+    return ;
+ 
