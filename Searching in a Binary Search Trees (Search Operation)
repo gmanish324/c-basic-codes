@@ -1,0 +1,83 @@
+// HAMESHA TWO EDGE CASES HOTA HAI JOH HUM MISS KARDETE HAI 
+// FIRST ONE IS JAB HEAD/ROOT NULL HO
+//SECOND ONE IS JAB HEAD->NEXT YA FIR ROOT KA LEFT/RIGHT NULL HO
+// DSA KA CODE LIKHTE WAQT IN DOH ES T CASES KA DHYAN RAKHO
+
+
+// Online C compiler to run C program online
+#include <stdio.h>
+
+#include<stdlib.h>
+
+
+
+struct node{
+    
+    struct node* left;
+    int data;
+    struct node* right;
+};
+
+struct node*search(struct node* ptr,int data){
+    if(ptr!=NULL){
+        if(ptr->data==data){
+            return ptr;
+        }
+        else if(ptr->data>data){
+            return search(ptr->left,data);
+        }
+        else{
+            return search (ptr->right,data);
+        }
+    }
+    else{
+        return NULL;
+    }
+}
+void inTraversal(struct node *root){
+    
+
+if(root==NULL){
+        return ;}
+
+
+    inTraversal(root->left);
+    printf("%d ", root->data);
+    inTraversal(root->right);
+    return ;
+
+    }
+ 
+
+struct node* node(int data){
+    struct node * newnode=(struct node*)(malloc(sizeof(struct node)));
+    newnode->data=data;
+    newnode->left=NULL;
+    newnode->right=NULL;
+    return newnode;
+}
+
+
+
+int main(){
+     
+    // Constructing the root node - Using Function (Recommended)
+    struct node *root = node(4);
+    struct node *p1 = node(1);
+    struct node *p2 = node(6);
+    struct node *p3 = node(5);
+    struct node *p4 = node(2);
+   
+
+    // Linking the root node with left and right children
+    root->left = p1;
+    root->right = p2;
+    p1->left = p3;
+    p1->right = p4;
+    printf("%p\n",search (root,2));
+    printf("%p\n",search (root,7));
+    printf("%p\n",search (root,6));
+   inTraversal(root);
+
+    
+return 0;}
