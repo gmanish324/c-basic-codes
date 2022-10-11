@@ -1,0 +1,41 @@
+// struct node data type banane ke baad yaad se ; dalo
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct node{
+    int data;
+    struct node *next;
+};  // struct node data type banane ke baad yaad se ; dalo
+
+struct node* create(int arr[],int size){
+    struct node *head=NULL;
+    struct node *newnode=(struct node*)(malloc(sizeof(struct node)));
+    struct node* ptr=newnode;
+    newnode->data=arr[0];
+    head=ptr;
+    int i=1;
+    while(i<size){
+        struct node* newnode=(struct node *)(malloc(sizeof(struct node)));
+        ptr->next=newnode;
+        newnode->data=arr[i];
+        ptr=newnode;
+       
+        i++;
+}
+ ptr->next=NULL;
+return head;}
+
+void traversal(struct node *ptr){
+    while(ptr!=NULL){
+        printf("%d->",ptr->data);
+        ptr=ptr->next;
+    }
+    printf("NULL");
+}
+
+int  main(){
+    int array[5]={1,2,3,4,5};
+    traversal(create(array,5));
+    
+}
