@@ -4,20 +4,6 @@
 // DSA KA CODE LIKHTE WAQT IN DOH ES T CASES KA DHYAN RAKHO
 
 
-// Online C compiler to run C program online
-#include <stdio.h>
-
-#include<stdlib.h>
-
-
-
-struct node{
-    
-    struct node* left;
-    int data;
-    struct node* right;
-};
-
 struct node*search(struct node* ptr,int data){
     if(ptr!=NULL){
         if(ptr->data==data){
@@ -30,32 +16,9 @@ struct node*search(struct node* ptr,int data){
             return search (ptr->right,data);
         }
     }
-    else{
-        return NULL;
-    }
+    return NULL;
 }
-void inTraversal(struct node *root){
-    
 
-if(root==NULL){
-        return ;}
-
-
-    inTraversal(root->left);
-    printf("%d ", root->data);
-    inTraversal(root->right);
-    return ;
-
-    }
- 
-
-struct node* node(int data){
-    struct node * newnode=(struct node*)(malloc(sizeof(struct node)));
-    newnode->data=data;
-    newnode->left=NULL;
-    newnode->right=NULL;
-    return newnode;
-}
 
 
 
