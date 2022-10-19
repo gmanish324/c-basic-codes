@@ -5,18 +5,6 @@ Iterative Search in a Binary Search Tree
 // CONDITIONS KYA HOGA ,WELL HAMARE PASS 2 EDGE CASE KOI SA BHI POINTERS WALLE SAAWAL KAARTE WAQT RAHTA HAI IE
 // PTR==NULL || PTR->next ==NULL; use it accordingly
 
-#include<stdio.h>
-
-#include<stdlib.h>
-
-
-
-struct node{
-    
-    struct node* left;
-    int data;
-    struct node* right;
-};
 
 struct node*search(struct node* ptr,int data){
     while(ptr!=NULL){
@@ -31,34 +19,13 @@ struct node*search(struct node* ptr,int data){
             ptr=ptr->right;
         }
     }
-    if(ptr==NULL){
-        printf("%d not found",data);
-        return NULL;
+    return NULL;
+        
     }
 
 }
-void inTraversal(struct node *root){
-    
-
-if(root==NULL){
-        return ;}
 
 
-    inTraversal(root->left);
-    printf("%d ", root->data);
-    inTraversal(root->right);
-    return ;
-
-    }
- 
-
-struct node* node(int data){
-    struct node * newnode=(struct node*)(malloc(sizeof(struct node)));
-    newnode->data=data;
-    newnode->left=NULL;
-    newnode->right=NULL;
-    return newnode;
-}
 
 
 
