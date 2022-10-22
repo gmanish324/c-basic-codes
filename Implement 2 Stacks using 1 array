@@ -1,0 +1,61 @@
+// ek thought ye tha ki saare even index position par satck 1 ke elements ko store kardo and vice versa,but woh utna efficient nhi hai
+
+// logic used here:- stack 1 ko starting se and stack2 ko end se fill karo.
+// Important case to think upon:- jab stack 1 and stack 2 ke elements milne wal honge
+
+
+
+
+//Function to push an integer into the stack1.
+void twoStacks :: push1(int x)
+{
+    if(top1+1==top2){
+        printf("stack overflow");
+    }
+    else{
+        top1++;
+        arr[top1]=x;
+    }
+
+}
+   
+//Function to push an integer into the stack2.
+void twoStacks ::push2(int x)
+{
+    if(top2-1==top1){
+        printf("stack overflow");
+        
+    }
+    else{
+        top2--;
+        arr[top2]=x;
+    }
+
+}
+   
+//Function to remove an element from top of the stack1.
+int twoStacks ::pop1()
+{
+    if(top1!=-1){
+        top1--;
+        return arr[top1+1];
+    }
+    else{
+        return -1;
+    }
+
+}
+
+//Function to remove an element from top of the stack2.
+int twoStacks :: pop2()
+{
+    if(top2!=size){
+        top2++;
+        return arr[top2-1];
+    }
+    else{
+        return -1;
+    }
+
+}
+
